@@ -1,0 +1,30 @@
+# 1- Classificador de Idade
+# Objetivo: Solicitar a idade e classificá-la em uma categoria.
+
+# Importa a biblioteca sys para sair do programa em caso de erro
+import sys
+
+# Solicita a idade do usuário e tenta converter para inteiro
+try:
+    idade = int(input("Digite a idade do usuário (em anos): "))
+except ValueError:
+    print("Erro: A idade deve ser um número inteiro válido.")
+    sys.exit()
+
+# Classificação usando estruturas condicionais (if/elif/else)
+if idade < 0:
+    classificacao = "Idade inválida"
+elif idade <= 12:
+    classificacao = "Criança"
+elif idade <= 17:
+    classificacao = "Adolescente"
+elif idade <= 59:
+    classificacao = "Adulto"
+else:
+    classificacao = "Idoso"
+
+# Exibição do resultado
+print("-" * 30)
+print(f"Idade informada: {idade} anos")
+print(f"Classificação: {classificacao}")
+print("-" * 30)
