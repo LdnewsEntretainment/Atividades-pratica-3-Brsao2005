@@ -1,0 +1,38 @@
+# 2- Calculadora de IMC (Índice de Massa Corporal)
+# Objetivo: Calcular o IMC e classificar o resultado com base em peso e altura.
+
+import sys
+
+# Solicita o peso e a altura do usuário e converte para float
+try:
+    peso = float(input("Digite seu peso em kg (ex: 75.5): "))
+    altura = float(input("Digite sua altura em metros (ex: 1.75): "))
+except ValueError:
+    print("Erro: Os valores de peso e altura devem ser números válidos.")
+    sys.exit()
+
+# Verifica se os valores são válidos antes do cálculo
+if peso <= 0 or altura <= 0:
+    print("Erro: Peso e altura devem ser valores positivos.")
+    sys.exit()
+
+# Cálculo do IMC: peso / (altura * altura)
+imc = peso / (altura ** 2)
+
+# Classificação do IMC usando estruturas condicionais
+if imc < 18.5:
+    classificacao = "Abaixo do peso"
+elif imc < 25:
+    classificacao = "Peso normal"
+elif imc < 30:
+    classificacao = "Sobrepeso"
+else:
+    classificacao = "Obeso"
+
+# Exibição detalhada dos resultados
+print("-" * 30)
+print(f"Peso: {peso:.2f} kg")
+print(f"Altura: {altura:.2f} m")
+print(f"Seu IMC é: {imc:.2f}")  # Arredonda o IMC para 2 casas decimais na exibição
+print(f"Classificação: {classificacao}")
+print("-" * 30)
