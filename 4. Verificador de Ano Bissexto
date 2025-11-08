@@ -1,0 +1,30 @@
+# 4- Verificador de Ano Bissexto
+# Objetivo: Determinar se um ano inserido pelo usuário é bissexto.
+
+import sys
+
+# Solicita o ano do usuário e converte para inteiro
+try:
+    ano = int(input("Digite o ano para verificação: "))
+except ValueError:
+    print("Erro: O ano deve ser um número inteiro válido.")
+    sys.exit()
+
+# Lógica para determinar se o ano é bissexto (Regras)
+# 1. Divisível por 4 E não divisível por 100
+# OU
+# 2. Divisível por 400
+if (ano % 4 == 0 and ano % 100 != 0) or (ano % 400 == 0):
+    e_bissexto = True
+else:
+    e_bissexto = False
+
+# Exibição do resultado
+print("-" * 30)
+print(f"Ano analisado: {ano}")
+
+if e_bissexto:
+    print("Resultado: É um ano Bissexto!")
+else:
+    print("Resultado: Não é um ano bissexto.")
+print("-" * 30)
