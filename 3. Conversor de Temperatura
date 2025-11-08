@@ -1,0 +1,64 @@
+# 3- Conversor de Temperatura
+# Objetivo: Converter temperaturas entre Celsius (C), Fahrenheit (F) e Kelvin (K).
+
+import sys
+
+def converter_temperatura(valor, origem, destino):
+    """Realiza a conversão de temperatura entre as unidades."""
+    
+    # Padroniza as entradas para facilitar a comparação
+    origem = origem.upper()
+    destino = destino.upper()
+
+    if origem == destino:
+        return valor  # Nenhuma conversão necessária
+
+    # 1. Conversão para a base Celsius (C)
+    if origem == 'F':
+        celsius = (valor - 32) * 5/9
+    elif origem == 'K':
+        celsius = valor - 273.15
+    elif origem == 'C':
+        celsius = valor
+    else:
+        # Retorna None se a unidade de origem for inválida
+        return None 
+    
+    # 2. Conversão da base Celsius (C) para o destino
+    if destino == 'F':
+        resultado = (celsius * 9/5) + 32
+    elif destino == 'K':
+        resultado = celsius + 273.15
+    elif destino == 'C':
+        resultado = celsius
+    else:
+        # Retorna None se a unidade de destino for inválida
+        return None
+
+    return resultado
+
+# --- Entrada do Usuário ---
+
+print("Unidades disponíveis: C (Celsius), F (Fahrenheit), K (Kelvin)")
+
+try:
+    temp_valor = float(input("Digite o valor da temperatura: "))
+    temp_origem = input("Digite a unidade de origem (C, F ou K): ")
+    temp_destino = input("Digite a unidade de destino (C, F ou K): ")
+except ValueError:
+    print("Erro: O valor da temperatura deve ser um número válido.")
+    sys.exit()
+
+# --- Execução e Saída ---
+
+resultado_conversao = converter_temperatura(temp_valor, temp_origem, temp_destino)
+
+print("-" * 35)
+if resultado_conversao is None:
+    print("Erro: Unidade de origem ou destino inválida.")
+elif temp_origem.upper() == temp_destino.upper():
+    print(f"Resultado: {temp_valor:.2f} {temp_origem.upper()} (Mesma unidade)")
+else:
+    print(f"Valor original: {temp_valor:.2f} {temp_origem.upper()}")
+    print(f"Valor convertido: {resultado_conversao:.2f} {temp_destino.upper()}")
+print("-" * 35)
